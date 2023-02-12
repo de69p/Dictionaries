@@ -42,8 +42,6 @@ public class FileNavigator2 {
     //    Реалізувати метод remove у класі FileNavigator.
     //    Метод видаляє шлях і пов'язані з ним файли, виходячи з значення шляху, переданого як параметр.
     public void remove(String path) {
-        List<FileData> files = new ArrayList<>();
-        map.put(path, files);
         map.remove(path);
     }
 
@@ -51,7 +49,7 @@ public class FileNavigator2 {
     // Метод сортує всі наявні файли за розміром (за зростанням),
     // потім повертає список відсортованих файлів
     public List<FileData> sortBySize(int size) {
-        TreeSet<FileData> fileData = new TreeSet<>((newFile, newestFile) -> newFile.getFileSize() - newestFile.getFileSize());
+        TreeSet<FileData> fileData = new TreeSet<>(Comparator.comparingInt(FileData::getFileSize));
         for (List<FileData> files : map.values()) {
             for (FileData file : files) {
                 if (file.getFileSize() < size) fileData.add(file);
@@ -59,10 +57,6 @@ public class FileNavigator2 {
         }
         return fileData.stream().toList();
     }
-
-    //Реалізувати перевірку консистентності у методі add у класі FileNavigator.
-    //Не дозволяти додавати значення і повідомити про це в консолі,
-    //при спробі додати значення FileData значення шляху якого не відповідає шляху-ключу, що веде до списку файлів.
 
 }
 

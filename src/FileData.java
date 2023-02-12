@@ -2,6 +2,11 @@ public class FileData {
     String path;
     String name;
     int fileSize;
+    public FileData(String path, String name, int fileSize) {
+        this.path = path;
+        this.name = name;
+        this.fileSize = fileSize;
+    }
 
     public String getPath() {
         return path;
@@ -26,12 +31,6 @@ public class FileData {
     public void setFileSize(int fileSize) {
         this.fileSize = fileSize;
     }
-    public void compareTo(){
 
-    }
-
-    FileData(){
-
-    }
 
 }
